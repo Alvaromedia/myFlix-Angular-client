@@ -166,7 +166,7 @@ export class FetchApiDataService {
   }
 
   // Making the api call to delete a users profile
-  deleteUserProfile(): Observable<any> {
+  public deleteUserProfile(): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('username');
     return this.http
