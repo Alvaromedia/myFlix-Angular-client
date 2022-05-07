@@ -1,0 +1,19 @@
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-image {
+  height: 25em;
+}
+
+.movie-header {
+  width: 20em;
+}
+
+.movie-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
