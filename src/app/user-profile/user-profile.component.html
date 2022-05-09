@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<div class="user-info">
+  <mat-card-content>
+    <form class="edit-user-form">
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userData.Username"
+          placeholder="Username"
+          type="text"
+          name="Username"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userData.Password"
+          type="password"
+          placeholder="Password"
+          name="Password"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userData.Email"
+          type="email"
+          placeholder="Email"
+          name="Email"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="userData.Birthday"
+          type="date"
+          placeholder="Birthday"
+          name="Birthday"
+        />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="editUserProfile()" color="">
+      Edit user settings
+    </button>
+  </mat-card-actions>
+  <mat-card-actions>
+    <button mat-raised-button (click)="deleteUserProfile()" color="primary">
+      Delete user
+    </button>
+  </mat-card-actions>
+</div>
+
+<div>
+  <h2>Favourite Movies</h2>
+</div>
+<div class="favourite-movies-wrapper">
+  <mat-card *ngFor="let movie of FavMovie">
+    <mat-card-header>
+      <mat-card-title>
+        {{ movie.Title }}
+      </mat-card-title>
+      <mat-card-subtitle>Directed by: </mat-card-subtitle>
+    </mat-card-header>
+    <img src="{{ movie.ImagePath }}" alt="{{ movie.Title }}" />
+    <mat-card-actions>
+      <mat-card-actions>
+        <button
+          mat-icon-button
+          (click)="removeFavMovie(movie._id, movie.Title)"
+        >
+          Remove
+        </button>
+      </mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</div>
