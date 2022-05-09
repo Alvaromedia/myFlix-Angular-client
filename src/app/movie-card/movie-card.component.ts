@@ -41,6 +41,11 @@ export class MovieCardComponent implements OnInit {
     this.showFavMovie();
   }
 
+  /**
+   * function to show movies
+   * @function getMovies
+   * @returns movies
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -49,6 +54,14 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * open Director dialog
+   * @function openDirectorDialog
+   * @param name
+   * @param bio
+   * @param birth
+   * @param death
+   */
   openDirectorDialog(
     name: string,
     bio: string,
@@ -61,6 +74,13 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * open genre dialog
+   * @function openGenreDialog
+   * @param name
+   * @param description
+   */
+
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreCardComponent, {
       data: { Name: name, Description: description },
@@ -68,6 +88,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * open description dialog
+   * @function openMovieDescription
+   * @param title
+   * @param description
+   */
   openMovieDescription(title: string, description: string): void {
     this.dialog.open(MovieDescriptionCardComponent, {
       data: { Title: title, Description: description },
@@ -75,6 +101,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * fetch all favourited movies
+   * @function showFavMovie
+   */
   showFavMovie(): void {
     const user = localStorage.getItem('user');
     this.fetchApiData.getUserProfile(user).subscribe((resp: any) => {
@@ -83,6 +113,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * lets a user add a movie to their favourites
+   * @function addFavMovie
+   * @param MovieID
+   * @param Title
+   */
   addFavMovie(MovieID: string, Title: string): void {
     this.fetchApiData
       .addFavouriteMovie(this.user.Username, MovieID)
@@ -99,6 +135,12 @@ export class MovieCardComponent implements OnInit {
       });
   }
 
+  /**
+   * lets a user delete a movie from favourites
+   * @function addFavMovie
+   * @param MovieID
+   * @param Title
+   */
   deleteFavMovie(MovieID: string, Title: string): void {
     this.fetchApiData
       .deleteFavouriteMovie(this.user.Username, MovieID)
@@ -111,10 +153,20 @@ export class MovieCardComponent implements OnInit {
       });
   }
 
+  /**
+   * checks if a movie is in favourites
+   * @param MovieID
+   * @returns boolean
+   */
   isFav(MovieID: string): boolean {
     return this.FavMovie.some((id) => id === MovieID);
   }
 
+  /**
+   * toggle favourites
+   * @function setFavStatus
+   * @param movie
+   */
   setFavStatus(movie: any): void {
     this.isFav(movie._id)
       ? this.deleteFavMovie(movie._id, movie.Title)

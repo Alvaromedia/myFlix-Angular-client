@@ -41,6 +41,11 @@ export class UserProfileComponent implements OnInit {
     this.getFavourites();
   }
 
+  /**
+   * calls API endpoint to get user info
+   * @function getUserProfile
+   * @return user data in JSON format
+   */
   getUserProfile(): void {
     const user = localStorage.getItem('user');
     if (user) {
@@ -50,6 +55,11 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * calls API endpoint to update user info
+   * @function editUserProfile
+   
+   */
   editUserProfile(): void {
     this.fetchApiData.editUserProfile(this.userData).subscribe((result) => {
       localStorage.setItem('user', result.Username);
@@ -62,6 +72,10 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * calls API endpoint to delete a user
+   * @function deleteUserProfile
+   */
   deleteUserProfile(): void {
     if (confirm('Are you sure? This cannot be undone.')) {
       this.fetchApiData.deleteUserProfile().subscribe(() => {
@@ -74,6 +88,10 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * displays users' favourite movies
+   * @function getFavourites
+   */
   getFavourites(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -85,6 +103,12 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * removes a movie from thye list of favourites
+   * @function removeFavMovie
+   * @param MovieID
+   * @param Title
+   */
   removeFavMovie(MovieID: string, Title: string): void {
     this.fetchApiData
       .deleteFavouriteMovie(this.user.Username, MovieID)

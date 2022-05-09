@@ -11,6 +11,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Router } from '@angular/router';
 
+/**
+ * @module GenreCardComponent
+ */
 @Component({
   selector: 'app-genre-card',
   templateUrl: './genre-card.component.html',
@@ -18,6 +21,10 @@ import { Router } from '@angular/router';
 })
 export class GenreCardComponent implements OnInit {
   constructor(
+    /**
+     *
+     * @param data
+     */
     @Inject(MAT_DIALOG_DATA)
     public data: {
       Name: string;

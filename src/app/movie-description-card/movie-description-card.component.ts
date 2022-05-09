@@ -18,6 +18,10 @@ import { Router } from '@angular/router';
 })
 export class MovieDescriptionCardComponent implements OnInit {
   constructor(
+    /**
+     *
+     * @param data
+     */
     @Inject(MAT_DIALOG_DATA)
     public data: {
       Title: string;

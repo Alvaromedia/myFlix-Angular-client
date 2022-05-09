@@ -13,7 +13,12 @@ export class WelcomePageComponent {
   title = 'myFlix-Angular-client';
 
   constructor(public dialog: MatDialog) {}
-  // This is the function that will open the dialog when the signup button is clicked
+
+  /**
+   *  This is the function that will open the dialog when the signup button is clicked
+   * @function openUserRegistrationDialog
+   */
+
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       // Assigning the dialog a width
@@ -21,6 +26,10 @@ export class WelcomePageComponent {
     });
   }
 
+  /**
+   *  This is the function that will open the dialog when the login button is clicked
+   * @function openUserLoginDialog
+   */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       // Assigning the dialog a width

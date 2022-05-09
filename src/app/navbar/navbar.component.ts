@@ -26,14 +26,26 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * function to log out a user and clear localStorage
+   * @function toMovies
+   */
   toMovies(): void {
     this.router.navigate(['movies']);
   }
 
+  /**
+   * function to log out a user and clear localStorage
+   * @function toUserProfile
+   */
   toUserProfile(): void {
     this.router.navigate(['profile']);
   }
 
+  /**
+   * function to log out a user and clear localStorage
+   * @function logOut
+   */
   logOut(): void {
     localStorage.clear();
     this.snackBar.open('You have been successfully logged out', 'Ok', {
